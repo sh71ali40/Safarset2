@@ -1,0 +1,57 @@
+﻿
+@inherits LayoutComponentBase
+<Loading></Loading>
+<Toast></Toast>
+<Confirm></Confirm>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2 col-md-3 col-xs-12">
+            <div class="row">
+                <NavLink class="col-12 btn btn-primary" href="manage" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> مدیریت اسلایدر
+                </NavLink>
+
+            </div>
+            <div class="row">
+                <NavLink class="col-12 btn btn-primary" href="manage/city">
+                    <span class="oi oi-home" aria-hidden="true"></span> مدیریت شهرها
+                </NavLink>
+            </div>
+
+            <div class="row">
+                <NavLink class="col-12 btn btn-primary" href="manage/category">
+                    <span class="oi oi-home" aria-hidden="true"></span>مدیریت دسته ها
+                </NavLink>
+
+            </div>
+            <div class="row">
+                <NavLink class="col-12 btn btn-primary" href="manage/discount">
+                    <span class="oi oi-home" aria-hidden="true"></span> مدیریت تخفیف ها
+                </NavLink>
+
+            </div>
+            <div class="row">
+                <NavLink class="col-12 btn btn-primary" href="manage/merchant">
+                    <span class="oi oi-home" aria-hidden="true"></span> مدیریت مرچنت ها
+                </NavLink>
+            </div>
+
+            <div class="row">
+                <a class="col-12 btn btn-primary" href="#">
+                    بازگشت
+                </a>
+
+            </div>
+        </div>
+        <div class="col-lg-10 col-md-9">
+            <TelerikRootComponent>
+                @Body
+            </TelerikRootComponent>
+        </div>
+    </div>
+
+
+
+</div>
+

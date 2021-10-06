@@ -1,0 +1,36 @@
+﻿@if (IsVisible)
+{
+    <div class="loaders">
+        <div class="loader-container">
+            <span class="loader-size-title">@Message</span>
+            <TelerikLoader Class="loader-indicator" Type="LoaderType.ConvergingSpinner" Size="@LoaderSize.Large"></TelerikLoader>
+        </div>
+    </div>
+}
+
+
+<style>
+    .loaders {
+        position: fixed;
+        z-index: 100;
+        top: 50%;
+        left: 50%;
+        backdrop-filter: blur(10px);
+        -ms-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .loader-size-title {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .loader-container {
+        text-align: center;
+        width: 150px;
+        display: inline-table;
+        padding-top: 10px;
+    }
+</style>
+ 

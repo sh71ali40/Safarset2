@@ -1,0 +1,47 @@
+﻿@page "/Manage"
+@page "/Manage/Slider"
+@using Safarset.ViewModel.Entities
+@using Safarset2.Class
+
+<div class="row">
+    <div class="col-12">
+        <a href="Manage/Slider/AddEdit" class="btn btn-success">
+            <i class="fas fa-plus"></i>
+            افزودن
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <TelerikGrid Data="@Slides" Height="400px"
+                     Pageable="true" Sortable="false" Groupable="false"
+                     FilterMode="Telerik.Blazor.GridFilterMode.FilterRow"
+                     Resizable="true" Reorderable="false">
+            <GridColumns>
+                <GridColumn Title="تصویر" Editable="false" Width="110px">
+                    <Template>
+                        @{
+                            var slide = context as SlideDto;
+                            var imageUrl = $"{Variable.UploadAddress}/{slide.ImageName}";
+                            <img src="@imageUrl" />
+                        }
+                    </Template>
+                </GridColumn>
+                
+
+                <GridCommandColumn Width="250px">
+
+                    <GridCommandButton Command="Remove" Icon="delete" OnClick="OnRemoveClick">
+                        حذف
+                    </GridCommandButton>
+                </GridCommandColumn>
+
+            </GridColumns>
+
+        </TelerikGrid>
+    </div>
+</div>
+
+@code {
+    
+}
