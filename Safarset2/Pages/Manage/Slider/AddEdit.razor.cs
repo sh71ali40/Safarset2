@@ -43,6 +43,7 @@ namespace Safarset2.Pages.Manage.Slider
 
                 var imageName = Guid.NewGuid() + ".jpg";
                 var slide = Mapper.Map<SlideDto, Slide>(SlideDto);
+
                 slide.ImageName = imageName;
                 var isSucc = await SlideService.InsertAsync(slide, true);
                 if (isSucc)

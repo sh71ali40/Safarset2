@@ -14,6 +14,8 @@ namespace Safarset2.Class
         {
             CreateMap<SlideDto, Slide>();
             CreateMap<Slide, SlideDto>();
+            CreateMap<CategoryDto, Category>();
+            CreateMap<Category, CategoryDto>();
 
         }
     }

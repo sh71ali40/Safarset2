@@ -1,3 +1,45 @@
 ﻿@page "/Manage/Category"
-<h3>Index</h3>
+@using Safarset.ViewModel.Entities
+@using Safarset2.Class
+
+<div class="row">
+    <div class="col-12">
+        <a href="Manage/Category/AddEdit" class="btn btn-success">
+            <i class="fas fa-plus"></i>
+            افزودن
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <TelerikGrid Data="@Categorys" Height="400px"
+                     Pageable="true" Sortable="false" Groupable="false"
+                     FilterMode="Telerik.Blazor.GridFilterMode.FilterRow"
+                     Resizable="true" Reorderable="false">
+            <GridColumns>
+                <GridColumn Title="نام" Editable="false" Width="110px">
+                    <Template>
+                        @{
+                            @*var slide = context as CategoryDto;
+                            var imageUrl = $"{Variable.UploadAddress}/{slide.ImageName}";
+                            <img src="@imageUrl" />*@
+                        var category = context as CategoryDto;
+                            <label>@category.Name</label>
+                        }
+                    </Template>
+                </GridColumn>
+
+
+                <GridCommandColumn Width="250px">
+
+                    <GridCommandButton Command="Remove" Icon="delete" OnClick="OnRemoveClick">
+                        حذف
+                    </GridCommandButton>
+                </GridCommandColumn>
+
+            </GridColumns>
+
+        </TelerikGrid>
+    </div>
+</div>
 

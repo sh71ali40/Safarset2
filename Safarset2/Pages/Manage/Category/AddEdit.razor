@@ -1,6 +1,45 @@
 ﻿@page "/Manage/Category/AddEdit"
 @page "/Manage/Category/AddEdit/{CategoryId:int}"
-<h3>AddEdit</h3>
+
+<EditForm Model="CategoryDto" OnValidSubmit="SubmitForm">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    @if (!string.IsNullOrEmpty(ErrorMessage))
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-danger">
+                    @ErrorMessage
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-4">
+            <div class="mb-3">
+                <label class="form-label">
+                    نام
+                </label>
+                <InputText @bind-Value="@Name" />
+
+
+            </div>
+        </div>
+       
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button type="submit" class="btn btn-success float-end">
+                <i class="fas fa-check"></i>
+                ثبت
+            </button>
+            <a href="Manage/Slider" class="btn btn-warning float-end mx-2">
+                <i class="fas fa-ban"></i>
+                انصراف
+            </a>
+        </div>
+    </div>
+</EditForm>
 
 @code {
 
