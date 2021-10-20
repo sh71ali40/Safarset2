@@ -18,7 +18,6 @@ namespace Safarset2.Pages.Manage.Category
     public partial class AddEdit
     {
         public CategoryDto CategoryDto { get; set; } = new CategoryDto();
-
         [Parameter] public int CategoryId { get; set; }
         public string ErrorMessage { get; set; }
         public string Name { get; set; }
@@ -27,20 +26,17 @@ namespace Safarset2.Pages.Manage.Category
         [Inject] private NavigationManager NavigationManager { get; set; }
         [Inject] private LoadingService LoadingService { get; set; }
         [Inject] private ILogger<Category.AddEdit> Logger { get; set; }
-
         [Inject] public IMapper Mapper { get; set; }
         private async Task SubmitForm()
         {
             try
             {
-              
                 LoadingService.Show();
                 var cateogory = Mapper.Map<CategoryDto, Safarset.Datalayer.Context.Entities.Category>(CategoryDto);
                 cateogory.Name = Name;
                 var isSucc = await CategoryService.InsertAsync(cateogory, true);
                 if (isSucc)
                 {
-                    
                     ToastService.ShowToast("ثبت با موفقیت انجام شد", ToastLevel.Success);
                     NavigationManager.NavigateTo("Manage/Category");
                 }
@@ -49,7 +45,6 @@ namespace Safarset2.Pages.Manage.Category
                     throw new Exception();
                 }
                 LoadingService.Hide();
-
             }
             catch (Exception e)
              {

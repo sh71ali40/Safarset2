@@ -22,7 +22,7 @@ namespace Safarset2.Pages.Manage.Category
         [Inject] public ICategoryService CategoryService { get; set; }
         [Inject] public ConfirmService ConfirmService { get; set; }
 
-        protected override async Task OnInitializedAsync()
+          protected override async Task OnInitializedAsync()
         {
             var categories = CategoryService.GetAllAsQueryable().OrderByDescending(s => s.Id).AsEnumerable();
             var mappedCategorys = Mapper.Map<IEnumerable<Safarset.Datalayer.Context.Entities.Category>, IEnumerable<CategoryDto>>(categories);
