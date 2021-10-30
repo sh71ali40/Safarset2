@@ -1,6 +1,6 @@
 ﻿@page "/Manage/Category/AddEdit"
 @page "/Manage/Category/AddEdit/{CategoryId:int}"
-
+@inherits Safarset2.Class.CrudComponent<Safarset.Datalayer.Context.Entities.Category, Safarset.ViewModel.Entities.CategoryDto, int, Safarset.Service.Services.ICategoryService>
 <EditForm Model="CategoryDto" OnValidSubmit="SubmitForm">
     <DataAnnotationsValidator></DataAnnotationsValidator>
     @if (!string.IsNullOrEmpty(ErrorMessage))
@@ -20,7 +20,7 @@
                 <label class="form-label">
                     نام
                 </label>
-                <InputText @bind-Value="@Name" />
+                <InputText @bind-Value="CategoryDto.Name" />
 
 
             </div>

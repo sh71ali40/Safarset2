@@ -21,8 +21,9 @@ namespace Safarset2.Pages.Manage.Category
         [Inject] public ToastService ToastService { get; set; }
         [Inject] public ICategoryService CategoryService { get; set; }
         [Inject] public ConfirmService ConfirmService { get; set; }
+        [Inject] private NavigationManager NavigationManager { get; set; }
 
-          protected override async Task OnInitializedAsync()
+        protected override async Task OnInitializedAsync()
         {
             var categories = CategoryService.GetAllAsQueryable().OrderByDescending(s => s.Id).AsEnumerable();
             var mappedCategorys = Mapper.Map<IEnumerable<Safarset.Datalayer.Context.Entities.Category>, IEnumerable<CategoryDto>>(categories);
@@ -32,7 +33,7 @@ namespace Safarset2.Pages.Manage.Category
         }
         private async void RemoveCategory(CategoryDto categoryDto)
         {
-            var result = await CategoryService.DeleteAsync(true, categoryDto.Id);
+            var result = await base.Delete(categoryDto.Id);
 
 
             if (result)
@@ -49,6 +50,11 @@ namespace Safarset2.Pages.Manage.Category
         {
             var category = (CategoryDto)e.Item;
             ConfirmService.Show("حذف", "آیا از حذف مطمئن هستید؟", () => RemoveCategory(category), null);
+        }
+        private async Task OnEditClick(GridCommandEventArgs e)
+        {
+            var category = (CategoryDto)e.Item;
+            NavigationManager.NavigateTo("Manage/Category/AddEdit/"+category.Id);
         }
 
     }

@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,7 +36,7 @@ namespace Safarset2
             services.AddScoped<ToastService>();
             services.AddScoped<LoadingService>();
             services.AddScoped<ConfirmService>();
-
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddDbContext<SafarsetContext>(option =>
             {

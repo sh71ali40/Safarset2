@@ -1,7 +1,7 @@
 ﻿@page "/Manage/Category"
 @using Safarset.ViewModel.Entities
 @using Safarset2.Class
-
+@inherits Safarset2.Class.CrudComponent<Safarset.Datalayer.Context.Entities.Category, Safarset.ViewModel.Entities.CategoryDto, int, Safarset.Service.Services.ICategoryService>
 <div class="row">
     <div class="col-12">
         <a href="Manage/Category/AddEdit" class="btn btn-success">
@@ -20,10 +20,7 @@
                 <GridColumn Title="نام" Editable="false" Width="110px">
                     <Template>
                         @{
-                            @*var slide = context as CategoryDto;
-                            var imageUrl = $"{Variable.UploadAddress}/{slide.ImageName}";
-                            <img src="@imageUrl" />*@
-                        var category = context as CategoryDto;
+                            var category = context as CategoryDto;
                             <label>@category.Name</label>
                         }
                     </Template>
@@ -34,6 +31,9 @@
 
                     <GridCommandButton Command="Remove" Icon="delete" OnClick="OnRemoveClick">
                         حذف
+                    </GridCommandButton>
+                    <GridCommandButton Command="Remove" Icon="delete" OnClick="OnEditClick">
+                        ویرایش
                     </GridCommandButton>
                 </GridCommandColumn>
 
