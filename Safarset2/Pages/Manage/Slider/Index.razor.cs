@@ -35,7 +35,7 @@ namespace Safarset2.Pages.Manage.Slider
 
         private async void RemoveSlide(SlideDto slideDto)
         {
-            var result = await SlideService.DeleteAsync(true, slideDto.Id);
+            var result = await base.Delete(slideDto.Id);
 
 
             if (result)

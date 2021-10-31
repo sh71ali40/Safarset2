@@ -1,6 +1,35 @@
 ﻿@page "/Manage/City"
-<h3>Index</h3>
 
-@code {
-    public int a;
-}
+@using Safarset.ViewModel.Entities
+@inherits Safarset2.Class.CrudComponent<Safarset.Datalayer.Context.Entities.City, Safarset.ViewModel.Entities.CityDto, int, Safarset.Service.Services.ICityService>
+
+<div class="row">
+    <div class="col-12">
+        <a href="Manage/City/AddEdit" class="btn btn-success">
+            <i class="fas fa-plus"></i>
+            افزودن
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <TelerikGrid Data="@Cities" Height="400px"
+                     Pageable="true" Sortable="false" Groupable="false"
+                     FilterMode="Telerik.Blazor.GridFilterMode.FilterRow"
+                     Resizable="true" Reorderable="false">
+            <GridColumns>
+                <GridColumn Field="@(nameof(CityDto.Name))" Title="نام شهر"  />
+
+
+                <GridCommandColumn Width="250px">
+
+                    <GridCommandButton Command="Remove" Icon="delete" OnClick="OnRemoveClick">
+                        حذف
+                    </GridCommandButton>
+                </GridCommandColumn>
+
+            </GridColumns>
+
+        </TelerikGrid>
+    </div>
+</div>

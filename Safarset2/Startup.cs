@@ -32,6 +32,7 @@ namespace Safarset2
 
             services.AddScoped<ISlideService, SlideService>();
             services.AddScoped<ICategoryService, CategoryService>();
+            services.AddScoped<ICityService, CityService>();
             services.AddScoped<IUnitOfWork, SafarsetContext>();
             services.AddScoped<ToastService>();
             services.AddScoped<LoadingService>();

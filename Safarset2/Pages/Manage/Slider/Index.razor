@@ -2,6 +2,7 @@
 @page "/Manage/Slider"
 @using Safarset.ViewModel.Entities
 @using Safarset2.Class
+@inherits Safarset2.Class.CrudComponent<Safarset.Datalayer.Context.Entities.Slide, Safarset.ViewModel.Entities.SlideDto, int, Safarset.Service.Services.ISlideService>
 
 <div class="row">
     <div class="col-12">
@@ -27,7 +28,7 @@
                         }
                     </Template>
                 </GridColumn>
-                
+
 
                 <GridCommandColumn Width="250px">
 
@@ -43,5 +44,5 @@
 </div>
 
 @code {
-    
+
 }

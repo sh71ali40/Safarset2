@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -60,6 +61,12 @@ namespace Safarset2.Class
         {
             var result = await Service.DeleteAsync(true, key);
             return result;
+        }
+        public virtual IEnumerable<TViewModel> GetAll()
+        {
+            var result =  Service.GetAllAsQueryable();
+            var mappedResult= Mapper.Map<IEnumerable<TEntity>, IEnumerable<TViewModel>>(result);
+            return mappedResult;
         }
     }
 }

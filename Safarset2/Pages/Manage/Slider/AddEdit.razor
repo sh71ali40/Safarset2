@@ -1,7 +1,7 @@
 ﻿@page "/Manage/Slider/AddEdit"
 @page "/Manage/Slider/AddEdit/{SliderId:int}"
 
-
+@inherits Safarset2.Class.CrudComponent<Safarset.Datalayer.Context.Entities.Slide, Safarset.ViewModel.Entities.SlideDto, int, Safarset.Service.Services.ISlideService>
 
 <EditForm Model="SlideDto" OnValidSubmit="SubmitForm">
     <DataAnnotationsValidator></DataAnnotationsValidator>

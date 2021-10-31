@@ -21,8 +21,7 @@ namespace Safarset2.Pages.Manage.Slider
         [Parameter] public int? SliderId { get; set; }
         public SlideDto SlideDto { get; set; } = new SlideDto();
         [Inject] public IWebHostEnvironment Environment { get; set; }
-        [Inject] public IMapper Mapper { get; set; }
-        [Inject] public ISlideService SlideService { get; set; }
+        
         [Inject] public ToastService ToastService { get; set; }
         [Inject] private NavigationManager NavigationManager { get; set; }
         [Inject] private ILogger<AddEdit> Logger { get; set; }
@@ -42,10 +41,10 @@ namespace Safarset2.Pages.Manage.Slider
                 LoadingService.Show();
 
                 var imageName = Guid.NewGuid() + ".jpg";
-                var slide = Mapper.Map<SlideDto, Slide>(SlideDto);
+                //var slide = Mapper.Map<SlideDto, Slide>(SlideDto);
 
-                slide.ImageName = imageName;
-                var isSucc = await SlideService.InsertAsync(slide, true);
+                SlideDto.ImageName = imageName;
+                var isSucc = await base.Insert(SlideDto);
                 if (isSucc)
                 {
                     var path = Path.Combine(Environment.ContentRootPath, "wwwroot\\" + 

@@ -17,19 +17,14 @@ namespace Safarset2.Pages.Manage.Category
     public partial class Index
     {
         public ObservableCollection<CategoryDto> Categorys { get; set; }
-        [Inject] private IMapper Mapper { get; set; }
         [Inject] public ToastService ToastService { get; set; }
-        [Inject] public ICategoryService CategoryService { get; set; }
         [Inject] public ConfirmService ConfirmService { get; set; }
         [Inject] private NavigationManager NavigationManager { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            var categories = CategoryService.GetAllAsQueryable().OrderByDescending(s => s.Id).AsEnumerable();
-            var mappedCategorys = Mapper.Map<IEnumerable<Safarset.Datalayer.Context.Entities.Category>, IEnumerable<CategoryDto>>(categories);
+            var mappedCategorys =base.GetAll().OrderByDescending(s => s.Id);
             Categorys = new ObservableCollection<CategoryDto>(mappedCategorys);
-            //  var categories = await CategoryService.GetAllAsNoTrackingAsync();
-
         }
         private async void RemoveCategory(CategoryDto categoryDto)
         {
