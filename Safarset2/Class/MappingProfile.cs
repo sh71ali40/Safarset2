@@ -12,10 +12,10 @@ namespace Safarset2.Class
     {
         public MappingProfile()
         {
-            CreateMap<SlideDto, Slide>();
-            CreateMap<Slide, SlideDto>();
-            CreateMap<CategoryDto, Category>();
-            CreateMap<Category, CategoryDto>();
+            CreateMap<SlideDto, Slide>().ReverseMap();
+            CreateMap<CityDto, City>().ReverseMap();
+            CreateMap<CategoryDto, Category>().ReverseMap();
+            
 
         }
     }

@@ -16,11 +16,12 @@ namespace Safarset2.Pages.Manage.City
 
         [Inject] public ToastService ToastService { get; set; }
         [Inject] public ConfirmService ConfirmService { get; set; }
+        [Inject] private NavigationManager NavigationManager { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
             var cities = base.GetAll().OrderByDescending(c => c.Id);
             Cities = new ObservableCollection<CityDto>(cities);
-            
 
         }
         private async void RemoveCity(CityDto cityDto)
@@ -42,6 +43,12 @@ namespace Safarset2.Pages.Manage.City
         {
             var city = (CityDto)e.Item;
             ConfirmService.Show("حذف", "آیا از حذف مطمئن هستید؟", () => RemoveCity(city), null);
+        }
+
+        private async Task OnEditClick(GridCommandEventArgs e)
+        {
+            var city = (CityDto)e.Item;
+            NavigationManager.NavigateTo("Manage/City/AddEdit/" + city.Id);
         }
     }
 }

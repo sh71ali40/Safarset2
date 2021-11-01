@@ -7,10 +7,9 @@ using AutoMapper;
 using Microsoft.AspNetCore.Components;
 using Safarset.Datalayer.Context.Entities;
 using Safarset.Service.Component;
-using Safarset.Service.Services;
 using Safarset.ViewModel.Entities;
 using Telerik.Blazor.Components;
-using Safarset.ViewModel.Entities;
+
 
 namespace Safarset2.Pages.Manage.Category
 {

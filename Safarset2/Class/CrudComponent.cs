@@ -48,7 +48,7 @@ namespace Safarset2.Class
             return false;
         }
 
-        public virtual async Task<bool> Update( TViewModel entityViewModel,int id)
+        public virtual async Task<bool> Update(TViewModel entityViewModel, TKey id)
         {
             var editedModel = await Service.FindAsync(id);
             var entity = Mapper.Map(entityViewModel,editedModel);
@@ -67,6 +67,13 @@ namespace Safarset2.Class
             var result =  Service.GetAllAsQueryable();
             var mappedResult= Mapper.Map<IEnumerable<TEntity>, IEnumerable<TViewModel>>(result);
             return mappedResult;
+        }
+
+        public virtual async Task<TViewModel> FindAsync(TKey key)
+        {
+            var obj = await Service.FindAsync(key);
+            var result = Mapper.Map<TViewModel>(obj);
+            return result;
         }
     }
 }
